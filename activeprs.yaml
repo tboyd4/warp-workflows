@@ -1,0 +1,35 @@
+---
+# The name of the workflow.
+name: Get Active PRs
+# The corresponding command for the workflow. Any arguments should be surrounded with two curly braces. E.g `command {{arg}}`.
+command: |-
+    gh api \
+      -H "Accept: application/vnd.github.v3+json" \
+      /repos/{{owner}}/{{repo}}/pulls
+# Any tags that the workflow should be categorized with.
+tags:
+  - GitHub
+# A description of the workflow.
+description: Querys GitHub API and searches for active PRs within the given repo.
+# List of arguments within the command.
+arguments:
+    # Name of the argument within the command. This must exactly match the name of the argument
+    # within the command (without the curly braces).
+  - name: owner
+    # The description of the argument.
+    description: The User or Organization that owns the Repo
+    # The default value for the argument.
+    default_value: ~
+  - name: repo
+    # The description of the argument.
+    description: The Name of the Repo
+    # The default value for the argument.
+    default_value: ~
+# The source URL for where the workflow was generated from, if any.
+source_url: ""
+# The author of the workflow.
+author: Tyler Boyd
+# The URL of original author of the Workflow. For example, if this workflow was generated from StackOverflow, the `author_url` would be the StackOverflow author's profile page.
+author_url: "https://www.tyboyd.dev/"
+# The valid shells where this workflow should be active. If valid for all shells, this can be left empty.
+shells: []
